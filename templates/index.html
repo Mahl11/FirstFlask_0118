@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask POST Request Example</title>
+    <!-- Memanggil CSS dari folder static dengan url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="card">
+        <h2>Form Input Data (POST Method)</h2>
+        <p class="subtitle">Masukkan nama kamu lalu klik kirim.</p>
+
+        <form method="POST">
+            <label for="nama">Nama</label>
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Masukkan nama kamu..."
+                    value="{{ nama }}"
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit">Kirim</button>
+            </div>
+        </form>
+
+        {% if error %}
+            <div class="result error">{{ error }}</div>
+        {% elif hasil %}
+            <div class="result success">{{ hasil }}</div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
